@@ -318,12 +318,17 @@ end
 
 -- Modify the default idle set after it was constructed.
 function job_customize_idle_set(idleSet)
+<<<<<<< Updated upstream
     if buffactive['Sublimation: Activated'] then
         if (state.IdleMode.value == 'Normal' or state.IdleMode.value:contains('Sphere')) and sets.buff.Sublimation then
             idleSet = set_combine(idleSet, sets.buff.Sublimation)
         elseif state.IdleMode.value:contains('DT') and sets.buff.DTSublimation then
             idleSet = set_combine(idleSet, sets.buff.DTSublimation)
         end
+=======
+    if player.mpp < 20 and (state.IdleMode.value == 'Normal' or state.IdleMode.value == 'Sphere') and state.DefenseMode.value == 'None' then
+        idleSet = set_combine(idleSet, sets.latent_refresh)
+>>>>>>> Stashed changes
     end
 
     if state.IdleMode.value == 'Normal' or state.IdleMode.value:contains('Sphere') then
@@ -398,12 +403,21 @@ end
 function check_song()
 	if state.AutoSongMode.value then
 		if not buffactive.march then
+<<<<<<< Updated upstream
 			windower.chat.input('/ma "Honor March" <me>')
 			tickdelay = os.clock() + 2
 			return true
 		elseif not buffactive.minuet then
 			windower.chat.input('/ma "Valor Minuet V" <me>')
 			tickdelay = os.clock() + 2
+=======
+			windower.chat.input('/ma "Victory March" <me>')
+			tickdelay = os.clock() + 7.5
+			return true
+		elseif not buffactive.march then
+			windower.chat.input('/ma "Advancing March <me>')
+			tickdelay = os.clock() + 7.5
+>>>>>>> Stashed changes
 			return true
 		elseif not buffactive.madrigal then
 			windower.send_command('gs c set ExtraSongsMode FullLength;input /ma "Blade Madrigal" <me>')
